@@ -14,7 +14,7 @@ pipeline {
         stage ('Build') {
             steps {
                 echo "This is build stage"
-                powershell label: '', script: 'mvn clean package checkstyle:checkstyle'
+                
             }
             post {
                 success {
@@ -30,8 +30,14 @@ pipeline {
         }
         stage ('Deploy') {
             steps {
-                echo "This is deployment stage"
+          
+                     timeout(time: 30, unit: 'SECONDS') {
+   
+                            input 'Do you want to proceed ?'
+                                                       }          
+                build job: 'JenkinsFirstProject', quietPeriod: 30
             }
         }
     }
 }
+
