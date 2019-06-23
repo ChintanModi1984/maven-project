@@ -14,7 +14,7 @@ pipeline {
         stage ('Build') {
             steps {
                 echo "This is build stage"
-                
+                powershell label: '', script: 'mvn clean package checkstyle:checkstyle'
             }
             post {
                 success {
