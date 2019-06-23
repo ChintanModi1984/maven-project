@@ -1,7 +1,10 @@
 pipeline {
     agent any
-    maven 'maven3'
-    jdk 'java8'
+    tools {
+        maven 'maven3'
+        jdk 'java8'
+    }
+    
     stages {
         stage ('init') {
             steps {
