@@ -14,7 +14,7 @@ pipeline {
         stage ('Build') {
             steps {
                 echo "This is build stage"
-                checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'clean package checkstyle:checkstyle', unHealthy: ''
+                powershell label: '', script: 'mvn clean package checkstyle:checkstyle'
             }
             post {
                 success {
@@ -23,6 +23,7 @@ pipeline {
                     echo "publish junit meter"
                     junit '**/surefire-reports/*.xml'
                     echo "check analysis result"
+                    checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'clean package checkstyle:checkstyle', unHealthy: ''
 
                 }
             }
