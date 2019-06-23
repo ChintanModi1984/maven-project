@@ -35,7 +35,7 @@ pipeline {
    
                             input 'Do you want to proceed ?'
                                                        }          
-                build job: 'JenkinsFirstProject', quietPeriod: 30
+                build  'JenkinsFirstProject'
             }
         }
     }
